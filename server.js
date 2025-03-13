@@ -17,6 +17,11 @@ wss.on('connection', (ws) => {
     ws.on('close', () => {
         console.log('Клиент отключен');
     });
+
+    // Обработка ошибок
+    ws.on('error', (error) => {
+        console.error('Ошибка WebSocket:', error);
+    });
 });
 
-console.log('Сервер запущен');
+console.log('Сервер запущен на порту', process.env.PORT || 8080);
