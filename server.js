@@ -9,8 +9,13 @@ wss.on('connection', (ws) => {
 
     // Обработка сообщений от клиента
     ws.on('message', (message) => {
-        console.log('Получено сообщение:', message);
+        // Декодирование сообщения
+        const decodedMessage = message.toString();
+        console.log('Получено сообщение:', decodedMessage);
+
         // Здесь можно добавить обработку сообщений
+        // Например, отправить ответ обратно клиенту
+        ws.send(JSON.stringify({ type: 'response', message: 'Hello, Client!' }));
     });
 
     // Обработка отключения клиента
